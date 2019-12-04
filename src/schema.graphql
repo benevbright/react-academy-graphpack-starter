@@ -1,3 +1,41 @@
 type Query {
-  hello: String
+  users(limit: Int, searchEmail: String): [User]
+  user(id: String): User
+  articles: [Article]
+  article(id: String!): Article
+  me: User
+}
+
+type User {
+  id: String
+  name: String
+  email: String
+  isEmployed: Boolean
+  age: Int
+  articles: [Article]!
+}
+
+input UserInput {
+  name: String
+  email: String
+  isEmployed: Boolean
+  age: Int
+}
+
+type Article {
+  id: String
+  title: String
+  body: String
+  author: User
+}
+
+input ArticleInput {
+  title: String!
+  body: String!
+}
+
+type Mutation {
+  updateUser(id: String, userInput: UserInput): User
+  createArticle(article: ArticleInput): Article
+  updateArticle(id: String, article: ArticleInput): Article
 }
