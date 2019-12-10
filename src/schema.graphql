@@ -1,16 +1,15 @@
 type Query {
   users(limit: Int, searchEmail: String): [User]
-  user(id: String): User
+  user(id: Int): User
   articles: [Article]
   article(id: String!): Article
   me: User
 }
 
 type User {
-  id: String
+  id: Int
   name: String
   email: String
-  isEmployed: Boolean
   age: Int
   articles: [Article]!
 }
@@ -18,7 +17,6 @@ type User {
 input UserInput {
   name: String
   email: String
-  isEmployed: Boolean
   age: Int
 }
 
@@ -35,7 +33,7 @@ input ArticleInput {
 }
 
 type Mutation {
-  updateUser(id: String, userInput: UserInput): User
+  updateUser(id: Int, userInput: UserInput): User
   createArticle(article: ArticleInput): Article
   updateArticle(id: String, article: ArticleInput): Article
 }

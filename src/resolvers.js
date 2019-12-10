@@ -36,6 +36,7 @@ const resolvers = {
     createArticle: (_, { article }) => {
       const newArticle = {
         id: getnerateId(),
+        isPublished: false,
         ...article
       };
       data.articles.push(newArticle);
